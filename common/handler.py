@@ -2,7 +2,7 @@ from tornado.escape import json_encode
 from tornado.web import RequestHandler, HTTPError
 
 
-class BaseRequestHandler(RequestHandler):
+class BaseJsonRequestHandler(RequestHandler):
     route: str
 
     def set_default_headers(self):

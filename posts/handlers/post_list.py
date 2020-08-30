@@ -1,10 +1,10 @@
-from common.handler import BaseRequestHandler
+from common.handler import BaseJsonRequestHandler
 from core.application import App
 from ..service import get_posts
 
 
 @App.add_handler
-class PostList(BaseRequestHandler):
+class PostList(BaseJsonRequestHandler):
     route = "/v1/posts"
 
     async def get(self):
