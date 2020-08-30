@@ -1,0 +1,13 @@
+session_name: wisent-backend
+start_directory: ./
+
+shell_command_before:
+  - source "`poetry env info -p`/bin/activate"
+windows:
+  - window_name: server
+    focus: true
+    panes:
+      - ""
+  - window_name: terminal
+    panes:
+      - ""
