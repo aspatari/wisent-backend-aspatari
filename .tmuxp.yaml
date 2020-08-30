@@ -7,7 +7,7 @@ windows:
   - window_name: server
     focus: true
     panes:
-      - ""
+      - "python main.py"
   - window_name: terminal
     panes:
       - ""
