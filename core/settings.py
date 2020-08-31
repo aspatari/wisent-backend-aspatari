@@ -1,4 +1,5 @@
 import environ
+import logging.config
 
 env = environ.Env()
 ROOT_DIR = environ.Path(__file__) - 2
@@ -15,12 +16,13 @@ if READ_DOT_ENV_FILE:
 
 DATABASE_URL = env.str("DATABASE_URL")
 PORT = env.int("PORT", 8000)
-ADDRESS = env.str("SERVER_ADDRESS", '0.0.0.0')
+ADDRESS = env.str("SERVER_ADDRESS", "0.0.0.0")
 DEBUG = env.bool("DEBUG", True)
 
 APP_SETTINGS = {"debug": DEBUG}
 
 LOG_LVL = "DEBUG" if DEBUG else "INFO"
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -33,16 +35,37 @@ LOGGING = {
             ),
             "datefmt": "%Y-%m-%d %H:%M:%S",
         },
-        "simple": {"format": "%(asctime)s [%(levelname)s] %(message)s", "datefmt": "%Y-%m-%d %H:%M:%S", },
-        "rich": {"datefmt": "[%X]", "format": "[%(name)s][%(funcName)s] -> %(message)s"},
+        "simple": {
+            "format": "%(asctime)s [%(levelname)s] %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+        "rich": {
+            "datefmt": "[%X]",
+            "format": "[%(name)s][%(funcName)s] -> %(message)s",
+        },
     },
     "handlers": {
-        "console": {"level": "DEBUG", "class": "logging.StreamHandler", "formatter": "simple", },
-        "console-verbose": {"level": "DEBUG", "class": "logging.StreamHandler", "formatter": "verbose", },
-        "terminal": {"class": "rich.logging.RichHandler", "formatter": "rich", "level": "DEBUG", },
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        "console-verbose": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+        "terminal": {
+            "class": "rich.logging.RichHandler",
+            "formatter": "rich",
+            "level": "DEBUG",
+        },
     },
     "loggers": {
         "tornado": {"handlers": ["terminal"], "level": LOG_LVL, "propagate": True, },
         "service": {"handlers": ["terminal"], "level": LOG_LVL, "propagate": True, },
+        "app": {"handlers": ["terminal"], "level": LOG_LVL, "propagate": True, },
+        "tortoise": {"handlers": ["terminal"], "level": LOG_LVL, "propagate": True, },
     },
 }
+logging.config.dictConfig(LOGGING)
