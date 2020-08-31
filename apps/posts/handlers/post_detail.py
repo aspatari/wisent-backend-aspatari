@@ -1,11 +1,9 @@
 from tornado.ioloop import IOLoop
 
 from common.handler import BaseJsonRequestHandler
-from core.application import App
-from ..service import get_post_by_id, PostNotFound
+from ..service import get_post_by_id
 
 
-@App.add_handler
 class PostDetailAsync(BaseJsonRequestHandler):
     route = "/v1/posts/(?P<post_id>\d+)"
 

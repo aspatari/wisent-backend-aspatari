@@ -1,4 +1,4 @@
-from typing import TypedDict, List
+from typing import TypedDict, List, Optional
 
 from tornado.escape import json_decode
 from tornado.httpclient import (
@@ -9,7 +9,7 @@ from tornado.httpclient import (
 )
 from tornado.web import HTTPError
 
-from posts.exceptions import PostNotFound
+from .exceptions import PostNotFound
 
 
 class Post(TypedDict):
@@ -22,7 +22,7 @@ class Post(TypedDict):
 BASE_URL = "https://jsonplaceholder.typicode.com/posts"
 
 
-async def get_posts(*, client: AsyncHTTPClient = AsyncHTTPClient(), url=BASE_URL) -> List[Post]:
+async def get_posts(*, client: Optional[AsyncHTTPClient] = None, url=BASE_URL) -> List[Post]:
     """
     Retrieve posts from fake api
     :arg client: HTTPClient exposed like argument for mocking for tests
@@ -31,6 +31,8 @@ async def get_posts(*, client: AsyncHTTPClient = AsyncHTTPClient(), url=BASE_URL
     """
     request = HTTPRequest(url=url, method="GET", validate_cert=False)
     try:
+        if client is None:
+            client = AsyncHTTPClient()
         response = await client.fetch(request)
         posts = json_decode(response.body)
         return posts
@@ -38,7 +40,7 @@ async def get_posts(*, client: AsyncHTTPClient = AsyncHTTPClient(), url=BASE_URL
         raise HTTPError(status_code=e.code, log_message=e.message)
 
 
-def get_post_by_id(post_id: int, *, client: HTTPClient = HTTPClient(), url=BASE_URL) -> Post:
+def get_post_by_id(post_id: int, *, client: Optional[HTTPClient] = None, url=BASE_URL) -> Post:
     """
     Retrieve post by id
     :arg post_id: Post ID
@@ -50,6 +52,8 @@ def get_post_by_id(post_id: int, *, client: HTTPClient = HTTPClient(), url=BASE_
     request = HTTPRequest(url=url, method="GET", validate_cert=False)
     # import time; time.sleep(5) # uncomment this for testing blocking mode
     try:
+        if client is None:
+            client = HTTPClient()
         response = client.fetch(request)
         post = json_decode(response.body)
         return post
