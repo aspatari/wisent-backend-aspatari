@@ -13,7 +13,8 @@ class BaseJsonRequestHandler(RequestHandler):
 
     def success(self, data: dict, status=200):
         self.set_status(status_code=status)
-        return self.return_json(data=data)
+        if data:
+            return self.return_json(data=data)
 
     def error(self, exception: HTTPError):
         message = exception.log_message
