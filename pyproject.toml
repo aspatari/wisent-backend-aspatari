@@ -11,6 +11,7 @@ uvloop = "^0.14.0"
 tortoise-orm = "^0.16.14"
 asyncpg = "^0.21.0"
 marshmallow = "^3.7.1"
+rich = "^6.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
