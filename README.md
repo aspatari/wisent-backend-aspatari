@@ -85,8 +85,12 @@ cp env.template .env
 poetry install
 tmuxp load .
 ```
-### Docker 
+#### Docker 
 ```
 cp env.template .env
 docker build -t wisent-backend .
+```
+#### Docker Compose
+```
+docker-compose up -d
 ```
