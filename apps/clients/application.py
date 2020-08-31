@@ -1,8 +1,7 @@
-from .handlers import ClientList, ClientCreate
-from .model import Client
 from common.application import BaseApplication
+from .handlers import ClientListCreateHandler, ClientCreateEditDelete
 
 
 class ClientApplication(BaseApplication):
-    handlers = [ClientList, ClientCreate]
+    handlers = [ClientListCreateHandler, ClientCreateEditDelete]
     models_path = "model"

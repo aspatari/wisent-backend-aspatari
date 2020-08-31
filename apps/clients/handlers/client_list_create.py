@@ -8,7 +8,7 @@ from ..service import client_service
 from common.exception import TornadoValidationError
 
 
-class ClientList(BaseJsonRequestHandler):
+class ClientListCreateHandler(BaseJsonRequestHandler):
     route = "/v1/clients"
 
     async def get(self):

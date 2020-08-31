@@ -1,2 +1,2 @@
-from .client_list import ClientList
-from .client_create import ClientCreate
+from .client_list_create import ClientListCreateHandler
+from .client_detail import ClientCreateEditDelete

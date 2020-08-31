@@ -7,3 +7,4 @@ class ClientDetailSchema(Schema):
     last_name = fields.Str()
     email = fields.Email()
     created_at = fields.DateTime(dump_only=True)
+    updated_at = fields.DateTime(dump_only=True)
