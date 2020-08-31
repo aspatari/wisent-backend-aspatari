@@ -11,6 +11,8 @@ services:
       PORT: 8000
     networks:
       - app
+    depends_on:
+      - db
   db:
     image: postgres:13
     restart: unless-stopped
