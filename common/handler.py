@@ -11,10 +11,13 @@ class BaseJsonRequestHandler(RequestHandler):
     def return_json(self, data):
         self.finish(json_encode(data))
 
-    def success(self, data):
+    def success(self, data: dict, status=200):
+        self.set_status(status_code=status)
         return self.return_json(data=data)
 
     def error(self, exception: HTTPError):
-        self.write({'status': exception.status_code, 'message': exception.log_message})
+        message = exception.log_message
+
+        self.write({'status': exception.status_code, 'message': message})
         self.set_status(exception.status_code)
         self.finish()
