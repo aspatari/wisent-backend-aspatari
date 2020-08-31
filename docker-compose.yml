@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: "postgres://postgreuser:postgrepass@localhost:5432/wisent"
+      DEBUG: True
+      PORT: 8000
+    volumes:
+      - /opt/app:/myapp
+    networks:
+      - app
+  db:
+    image: postgres:13
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgrepass
+      POSTGRES_USER: postgreuser
+      POSTGRES_DB: wisent
+    volumes:
+      - postgredb:/var/lib/postgresql/data
+    networks:
+      - app
+
+networks:
+  app:
+
+volumes:
+  postgredb:
