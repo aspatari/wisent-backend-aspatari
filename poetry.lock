@@ -114,6 +114,14 @@ pygments = ["Pygments (>=2.2.0)"]
 
 [[package]]
 category = "main"
+description = "Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application."
+name = "django-environ"
+optional = false
+python-versions = "*"
+version = "0.4.5"
+
+[[package]]
+category = "main"
 description = "Simple module to parse ISO 8601 dates"
 name = "iso8601"
 optional = false
@@ -334,7 +342,7 @@ python-versions = "*"
 version = "0.2.5"
 
 [metadata]
-content-hash = "280dcb6a74d9cb06e6ca85df961c680a49a6bbc1cd6bcf2ab49604ee80819002"
+content-hash = "e6965beed5913f5d2d27cc58d0feb569e326495792a9e1f6c29b59e0991fa738"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -400,6 +408,10 @@ commonmark = [
 devtools = [
     {file = "devtools-0.6-py3-none-any.whl", hash = "sha256:bba4886df5adbcedafa2ec0e5fb2c255a82ce94ec822a12aa16f1f104e9eed36"},
     {file = "devtools-0.6.tar.gz", hash = "sha256:3f2d4eb2de2a8501c41330524414b495d7bbf3066384b3cec5fa784a0d07099b"},
+]
+django-environ = [
+    {file = "django-environ-0.4.5.tar.gz", hash = "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde"},
+    {file = "django_environ-0.4.5-py2.py3-none-any.whl", hash = "sha256:c57b3c11ec1f319d9474e3e5a79134f40174b17c7cc024bbb2fad84646b120c4"},
 ]
 iso8601 = [
     {file = "iso8601-0.1.12-py2.py3-none-any.whl", hash = "sha256:210e0134677cc0d02f6028087fee1df1e1d76d372ee1db0bf30bf66c5c1c89a3"},

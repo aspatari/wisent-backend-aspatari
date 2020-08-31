@@ -15,8 +15,8 @@ ENV ENV=${ENV} \
   # poetry:
   POETRY_VERSION=1.0.0
 
-RUN addgroup -S django \
-  && adduser -S -G django django
+RUN addgroup -S wisent \
+  && adduser -S -G wisent wisent
 
 RUN apk update \
   # psycopg2 dependencies
@@ -38,7 +38,5 @@ RUN  poetry config virtualenvs.create false \
 WORKDIR /app
 
 COPY . /app
-
-
 
 CMD ['python','main.py']

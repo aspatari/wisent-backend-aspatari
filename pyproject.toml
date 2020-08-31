@@ -12,6 +12,7 @@ tortoise-orm = "^0.16.14"
 asyncpg = "^0.21.0"
 marshmallow = "^3.7.1"
 rich = "^6.0.0"
+django-environ = "^0.4.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
