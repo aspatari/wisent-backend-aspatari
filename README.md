@@ -74,3 +74,19 @@ WS /ws.
 - [] Implement mixins for CRUD operations
 - [] Add error handler on top of
 - [] Add way to build OpenApi documentation by code
+- [] Add pagination and filter backend
+
+
+
+### Develop
+#### Local
+```
+cp env.template .env
+poetry install
+tmuxp load .
+```
+### Docker 
+```
+cp env.template .env
+docker build -t wisent-backend .
+```
