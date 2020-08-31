@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "d09ae1df-a302-4019-8c10-e5515a4abd25",
+		"name": "Wisent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Post List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Clients",
+			"item": [
+				{
+					"name": "Client List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client Edit",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Edited first_name\",\n    \"last_name\": \"Edited last_name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/clients/{{client_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"clients",
+								"{{client_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Artur\",\n    \"last_name\": \"Spatari\",\n    \"email\": \"artur.spatari@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/v1/clients",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/v1/clients/{client_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"clients",
+								"{client_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/v1/clients/{client_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"v1",
+								"clients",
+								"{client_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "faa50b12-2549-478b-9185-2308d168864f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a0b067ac-204b-4d41-be62-d739d5aeb9a2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8e0516da-83f2-406d-9d01-694e5d00834d",
+			"key": "host",
+			"value": "http://localhost:8000"
+		},
+		{
+			"id": "4ec4138f-c62e-4cd3-b3bb-a4571b0d15c3",
+			"key": "client_id",
+			"value": ""
+		},
+		{
+			"id": "afc98837-a588-46a4-b953-a9a67f801516",
+			"key": "post_id",
+			"value": ""
+		}
+	],
+	"protocolProfileBehavior": {}
+}
