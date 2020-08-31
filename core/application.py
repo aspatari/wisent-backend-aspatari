@@ -21,12 +21,20 @@ class App(Application):
 
     def load_applications(self):
         for app in self.apps:
-            module = import_object(app)
-            application = module.application
-            application_class: Type[BaseApplication] = import_object(f"{app}.{application}")
-            routes = application_class().get_routes()
-            if routes:
-                from devtools import debug
-                self.handlers.extend(routes)
-            if application_class.models_path is not None:
-                self.models.append(f"{app}.{application_class.models_path}")
+            try:
+                module = import_object(app)
+                application = module.application
+                logger.info(f"[Load Module][{app}]")
+                application_class: Type[BaseApplication] = import_object(f"{app}.{application}")
+                logger.info(f"[Load Application Class][{application_class}]")
+                routes = application_class().get_routes()
+                if routes:
+                    for route in routes:
+                        self.handlers.append(route)
+                        logger.info(f"[Add handler][{route[0]}][{route[1]}]")
+                if application_class.models_path is not None:
+                    model_path = f"{app}.{application_class.models_path}"
+                    self.models.append(model_path)
+                    logger.info(f"[Load Model][{model_path}]")
+            except ImportError:
+                logger.exception(f"Can't log  {app}")
