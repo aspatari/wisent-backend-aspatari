@@ -20,7 +20,7 @@ RUN addgroup -S django \
 
 RUN apk update \
   # psycopg2 dependencies
-  && apk add --virtual build-deps gcc python3-dev musl-dev git\
+  && apk add --virtual build-deps gcc python3-dev musl-dev git make\
   && apk add postgresql-dev \
   # CFFI dependencies
   && apk add libffi-dev py-cffi \
@@ -41,4 +41,4 @@ COPY . /app
 
 
 
-CMD ['python3','main.py']
+CMD ['python','main.py']
