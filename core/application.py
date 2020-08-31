@@ -1,21 +1,21 @@
+import logging
 from typing import Type
 
 from tornado.util import import_object
 from tornado.web import Application
-import logging
+
 from common.application import BaseApplication
-from common.handler import BaseJsonRequestHandler
 
 logger = logging.getLogger("app")
 
 
 class App(Application):
-    apps = ["apps.posts", 'apps.clients', "apps.socket"]
+    apps = ["apps.posts", "apps.clients", "apps.socket"]
     handlers = []
     models = []
 
-    def __init__(self):
-        settings = {"debug": True}
+    def __init__(self, settings):
+
         self.load_applications()
         super(App, self).__init__(handlers=self.handlers, **settings)
 
@@ -25,7 +25,9 @@ class App(Application):
                 module = import_object(app)
                 application = module.application
                 logger.info(f"[Load Module][{app}]")
-                application_class: Type[BaseApplication] = import_object(f"{app}.{application}")
+                application_class: Type[BaseApplication] = import_object(
+                    f"{app}.{application}"
+                )
                 logger.info(f"[Load Application Class][{application_class}]")
                 routes = application_class().get_routes()
                 if routes:
