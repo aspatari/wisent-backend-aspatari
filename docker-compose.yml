@@ -6,11 +6,9 @@ services:
     ports:
       - "8000:8000"
     environment:
-      DATABASE_URL: "postgres://postgreuser:postgrepass@localhost:5432/wisent"
-      DEBUG: True
+      DATABASE_URL: "postgres://postgreuser:postgrepass@db:5432/wisent"
+      DEBUG: "true"
       PORT: 8000
-    volumes:
-      - /opt/app:/myapp
     networks:
       - app
   db:
